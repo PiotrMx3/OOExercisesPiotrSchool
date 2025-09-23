@@ -11,10 +11,9 @@ namespace OOExercisesPiotr
         public int Number1;
         public int Number2;
 
-        public CombinationOf2Numbers(int n1, int n2)
+        public CombinationOf2Numbers()
         {
-            Number1 = n1;
-            Number2 = n2;
+
         }
 
         public double Sum()
