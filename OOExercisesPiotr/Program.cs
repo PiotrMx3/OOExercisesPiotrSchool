@@ -10,6 +10,7 @@ namespace OOExercisesPiotr
             Console.WriteLine("Welkom bij de oefeningen van Objectgeoriënteerd Programmeren!");
             Console.WriteLine("Topic van de uit te voeren oefening?");
             Console.WriteLine("1: DateTime");
+            Console.WriteLine("2: Classes And Objects");
 
 
             string k = Console.ReadLine() ?? "".Trim();
@@ -18,6 +19,9 @@ namespace OOExercisesPiotr
             {
                 case "1":
                     _DateTime.ShowSubmenu();
+                    break;
+                case "2":
+                    ClassesAndObjects.ShowSubmenu();
                     break;
 
                 default:
