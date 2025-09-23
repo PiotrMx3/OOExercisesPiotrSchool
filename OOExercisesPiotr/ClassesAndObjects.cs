@@ -9,6 +9,7 @@ namespace OOExercisesPiotr
 {
     internal class ClassesAndObjects
     {
+        // Deze bevat oef H10-Figures en H11-FiguresWithConstructor
         public static void ShowSubmenu()
         {
 
