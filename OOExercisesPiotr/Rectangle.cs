@@ -15,7 +15,6 @@ namespace OOExercisesPiotr
         {
         
         }
-
       
         public Rectangle(double width, double height)
         {

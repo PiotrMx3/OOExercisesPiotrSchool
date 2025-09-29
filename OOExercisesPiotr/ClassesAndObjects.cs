@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace OOExercisesPiotr
-{
+{   
     internal class ClassesAndObjects
     {
         // Deze bevat oef H10-Figures en H11-FiguresWithConstructor
@@ -15,10 +15,10 @@ namespace OOExercisesPiotr
 
             Console.WriteLine("Uit te voeren oefening?");
             Console.WriteLine("1: DemoCombinationOf2Numbers ");
-            Console.WriteLine("2: FiguresWithConstructor ");
+            Console.WriteLine("2: Figures ");
+            Console.WriteLine("3: WithConstructor");
+            Console.WriteLine("4: FoodPurchase");
 
-            //Console.WriteLine("2: H10-Birthday");
-            //Console.WriteLine("3: H10-DayOfTheWeek");
             //Console.WriteLine("4: H10-TicksSince2000");
             //Console.WriteLine("5: H10-LeapYearCount");
             //Console.WriteLine("6: H10-CodeTiming");
@@ -33,16 +33,32 @@ namespace OOExercisesPiotr
                 case "2":
                     DemoFiguresWithConstructor();
                     break;
+                case "3":
+                    DemoFiguresWithConstructor();
+                    break;
+                case "4":
+                    DemoFoodPurchase();
+                    break;
                 default:
                     Console.WriteLine("Verkeerd keuze !");
                     break;
             }
 
 
-
-
         }
 
+
+
+        public static void DemoFoodPurchase()
+        {
+            FoodPurchase chess = new FoodPurchase("Kaas", 2, 2.45, true);
+
+            Console.WriteLine($"De totaalprijs van {chess.ProductName.ToUpper()} is {chess.CalculateTotalPrice():F1} euro.");
+            Console.WriteLine($"de vervaldatum van aankoop 1 is {chess.ExpirationDate:d}");
+
+            FoodPurchase boter = new FoodPurchase("boter", 0, 55555, true);
+
+        }
 
         private static void DemoFiguresWithConstructor()
         {
