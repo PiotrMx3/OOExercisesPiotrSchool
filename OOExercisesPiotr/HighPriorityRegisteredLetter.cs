@@ -26,7 +26,7 @@ namespace OOExercisesPiotr
 
                 if (Distance < 100) return _totalPrice = basisPrice;
 
-                _totalPrice = Math.Max(30, 30 * ((int)Distance / 100));
+                _totalPrice = (30 * ((int)Distance / 100));
 
                 return _totalPrice;
             }
