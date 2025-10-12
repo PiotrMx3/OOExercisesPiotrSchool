@@ -11,7 +11,9 @@ namespace OOExercisesPiotr
             Console.WriteLine("Topic van de uit te voeren oefening?");
             Console.WriteLine("1: DateTime");
             Console.WriteLine("2: Classes And Objects");
-            Console.WriteLine("3: Data Structurne");
+            Console.WriteLine("3: Data Structuren");
+            Console.WriteLine("4: Overerving ");
+
 
 
             string k = Console.ReadLine() ?? "".Trim();
@@ -27,6 +29,10 @@ namespace OOExercisesPiotr
 
                 case "3":
                     DataStructuren.ShowSubMenu();
+                    break;
+
+                case "4":
+                    Inheritance.ShowSubMenu();
                     break;
 
                 default:

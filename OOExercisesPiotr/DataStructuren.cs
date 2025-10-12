@@ -16,8 +16,11 @@ namespace OOExercisesPiotr
 
             Console.WriteLine("1. H13-PhhoneBookNameNumber");
             Console.WriteLine("2. H13-PhoneBookCityNameNumber");
+            Console.WriteLine("3. H13-PhhoneBookNameNumber Builder");
 
-        
+
+
+
 
 
             string userChoice = (Console.ReadLine() ?? "").Trim();
@@ -113,7 +116,7 @@ namespace OOExercisesPiotr
                     phoneCityBook[city] = new Dictionary<string, string>();
                 }
 
-                phoneCityBook[city].Add(name, number);
+                phoneCityBook[city][name] = number;
 
             }
 
