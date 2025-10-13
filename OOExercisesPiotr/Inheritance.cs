@@ -17,11 +17,17 @@ namespace OOExercisesPiotr
             {
                 Console.WriteLine("Uit te voeren oefening?");
                 Console.WriteLine("1. H14-DemoPostOffice");
+                Console.WriteLine("2. H14-Veterinarian");
+
                 choice = int.Parse(Console.ReadLine());
                 switch (choice)
                 {
                     case 1:
                         DemoPostOffice();
+                        break;
+
+                    case 2:
+                        DemoVet();
                         break;
 
                     default:
@@ -34,6 +40,34 @@ namespace OOExercisesPiotr
 
 
         }
+
+
+        public static void DemoVet()
+        {
+            var patients = new List<Animal>();
+            var animal1 = new Dog();
+            animal1.IndividualAllergies = new List<string> { "vis" };
+            animal1.Chip = "ABC123";
+            animal1.Gender = Genders.Female;
+            animal1.Name = "Misty";
+            patients.Add(animal1);
+            var animal2 = new Parrot();
+            animal2.Gender = Genders.Male;
+            animal2.Name = "Coco";
+            patients.Add(animal2);
+            foreach (var animal in patients)
+            {
+                Console.WriteLine(animal.Name);
+                Console.WriteLine(animal.Gender);
+                Console.WriteLine("allergieën:");
+                foreach (var allergie in animal.Allergies)
+                {
+                    Console.WriteLine(allergie);
+                }
+                animal.ShowChip();
+            }
+        }
+
 
 
         public static void DemoPostOffice()
