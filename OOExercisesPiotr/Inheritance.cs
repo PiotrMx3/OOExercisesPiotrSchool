@@ -20,6 +20,7 @@ namespace OOExercisesPiotr
                 Console.WriteLine("2. H14-Veterinarian");
                 Console.WriteLine("3. H15-Orders");
                 Console.WriteLine("4. H15-Pizza");
+                Console.WriteLine("5. H15-ChildMenu");
 
                 choice = int.Parse(Console.ReadLine());
                 switch (choice)
@@ -37,6 +38,9 @@ namespace OOExercisesPiotr
                     case 4:
                         DemoPizza();
                         break;
+                    case 5:
+                        ChildMenu();
+                        break;
 
                     default:
                         Console.WriteLine("Ongeldige keuze!");
@@ -46,6 +50,23 @@ namespace OOExercisesPiotr
                 isRunning = false;
             }
 
+
+        }
+
+        public static void ChildMenu()
+        {
+            List<Meal> list = new List<Meal>();
+
+            list.Add(new Meal("Paling in het groen", 22.00));
+            list.Add(new ChildrenMeal("Kinder Vol-au-Vent", 11.00));
+            list.Add(new Meal("Waterzooi", 22.00));
+            list.Add(new ChildrenMeal("Kabouterschnitzel", 12.00));
+
+
+            foreach (var item in list)
+            {
+                item.ShowTheMenu();
+            }
 
         }
 
