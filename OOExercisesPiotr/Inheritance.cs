@@ -18,6 +18,8 @@ namespace OOExercisesPiotr
                 Console.WriteLine("Uit te voeren oefening?");
                 Console.WriteLine("1. H14-DemoPostOffice");
                 Console.WriteLine("2. H14-Veterinarian");
+                Console.WriteLine("3. H15-Orders");
+                Console.WriteLine("4. H15-Pizza");
 
                 choice = int.Parse(Console.ReadLine());
                 switch (choice)
@@ -28,6 +30,12 @@ namespace OOExercisesPiotr
 
                     case 2:
                         DemoVet();
+                        break;
+                    case 3:
+                        DemoOrder();
+                        break;
+                    case 4:
+                        DemoPizza();
                         break;
 
                     default:
@@ -41,6 +49,55 @@ namespace OOExercisesPiotr
 
         }
 
+        public static void DemoPizza()
+        {
+
+            Margherita margherita = new Margherita(["mozzarella"]);
+
+            Console.WriteLine($"Een margerita zonder extra`s kost {margherita.Price}");
+            margherita.ShowIngredients();
+
+            Console.WriteLine();
+
+            Veggie veggie = new Veggie(["tofu", "spinaze"]);
+            Console.WriteLine($"Een veggie zonder extra`s kost {veggie.Price}");
+            veggie.ShowIngredients();
+            
+
+        }
+
+        public static void DemoOrder()
+        {
+            Console.WriteLine("Aantal stuks ?");
+            uint amount = Convert.ToUInt32(Console.ReadLine());
+
+            Console.WriteLine("Basisprijs ?");
+            double basisPrice = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine("Gewone bestelling (1) of interntionale bestelling (2) ?");
+
+            string choice = Console.ReadLine();
+
+
+
+            if(choice == "1")
+            {
+                Order newOrder = new Order(amount, basisPrice);
+                Console.WriteLine($"Totaalprijs: {newOrder.TotalPrice:F2} ");
+
+                return;
+            }
+
+            if (choice == "2")
+            {
+                InternationalOrder newOrder = new InternationalOrder(amount, basisPrice);
+                Console.WriteLine($"Totaalprijs: {newOrder.TotalPrice:F2} ");
+
+                return;
+            }
+
+            Console.WriteLine("Verkeerde keuze !");
+        }
 
         public static void DemoVet()
         {
