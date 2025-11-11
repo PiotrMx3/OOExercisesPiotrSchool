@@ -22,7 +22,7 @@ namespace OOExercisesPiotr
                 Console.WriteLine("4. H15-Pizza");
                 Console.WriteLine("5. H15-ChildMenu");
 
-                choice = int.Parse(Console.ReadLine());
+                choice = int.Parse(Console.ReadLine() ?? "");
                 switch (choice)
                 {
                     case 1:

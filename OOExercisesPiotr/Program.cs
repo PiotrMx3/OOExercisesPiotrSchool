@@ -13,10 +13,12 @@ namespace OOExercisesPiotr
             Console.WriteLine("2: Classes And Objects");
             Console.WriteLine("3: Data Structuren");
             Console.WriteLine("4: Overerving ");
+            Console.WriteLine("5: Exception Afhandeling ");
 
 
 
-            string k = Console.ReadLine() ?? "".Trim();
+
+            string k = (Console.ReadLine() ?? "").Trim();
 
             switch (k)
             {
@@ -33,6 +35,9 @@ namespace OOExercisesPiotr
 
                 case "4":
                     Inheritance.ShowSubMenu();
+                    break;
+                case "5":
+                    ExceptionHandling.ShowSubMenu();
                     break;
 
                 default:
