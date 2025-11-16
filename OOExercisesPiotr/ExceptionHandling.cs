@@ -20,6 +20,8 @@ namespace OOExercisesPiotr
             Console.WriteLine("8:  h16 Leeftijden Katten");
             Console.WriteLine("9:  h16 Filehelper");
             Console.WriteLine("10: h16 Leeftijd Kat Custom");
+            Console.WriteLine("11: h16 Gedeeltelijke Afhandeling");
+
 
 
 
@@ -61,6 +63,9 @@ namespace OOExercisesPiotr
                 case "10":
                     KatMetCustomException();
                     break;
+                case "11":
+                    DemonstreerFormulieren();
+                    break;
                 default:
                     Console.WriteLine("Ongeldige keuze probeer op het nieuw !");
                     break;
@@ -68,11 +73,42 @@ namespace OOExercisesPiotr
         }
 
 
+
+        private static void DemonstreerFormulieren()
+        {
+            var vraag1 = new FormulierGetalVraag("Hoe oud ben je?", 18, 130);
+            var vraag2 = new FormulierVrijeTekstVraag("Hoe ziet jouw ideale dag eruit?");
+            var vraag3 = new FormulierGetalVraag("Hoe veel personen heb je ten laste?", 0, 10);
+            var vraag4 = new FormulierVrijeTekstVraag("Wie is je idool?");
+            Formulier f1 = new Formulier(new List<FormulierVraag> { vraag1, vraag2 });
+            Formulier f2 = new Formulier(new List<FormulierVraag> { vraag3, vraag4 });
+            try
+            {
+                f1.VulIn();
+                f1.Toon();
+            }
+            catch (Exception)
+            {
+                System.Console.WriteLine("We zullen dit formulier weggooien.");
+                f1 = null;
+            }
+            try
+            {
+                f2.VulIn();
+                f2.Toon();
+            }
+            catch (Exception)
+            {
+                System.Console.WriteLine("We zullen dit formulier weggooien.");
+                f2 = null;
+            }
+        }
+
         private static void KatMetCustomException()
         {
             try
             {
-               KatMetCustomException kat = new KatMetCustomException(27);
+                KatMetCustomException kat = new KatMetCustomException(27);
             }
             catch (KatLeeftijdException e)
             {
