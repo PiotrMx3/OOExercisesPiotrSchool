@@ -55,7 +55,7 @@ namespace OOExercisesPiotr
 
         public string Omschrijving
         {
-            get { return Description; }
+            get { return $" PM:{Description}"; }
         }
     }
 }

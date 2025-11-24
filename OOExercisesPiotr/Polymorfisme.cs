@@ -13,6 +13,8 @@ namespace OOExercisesPiotr
             Console.WriteLine("1.h17 Autoconstructeur ");
             Console.WriteLine("2.h17 Grootkeuken ");
             Console.WriteLine("3.h17 Rooster Stap 1");
+            Console.WriteLine("4.h17 Rooster Stap 2");
+
 
 
             string choice = (Console.ReadLine() ?? "").Trim();
@@ -28,11 +30,24 @@ namespace OOExercisesPiotr
                 case "3":
                     DemonstreerIRoosterbaar();
                     break;
+                case "4":
+                    DemonstreerKalender1();
+                    break;
                 default:
                     Console.WriteLine("verkeerde keuze");
                     break;
             }
         }
+
+
+        public static void DemonstreerKalender1()
+        {
+            Kalender n = new Kalender("DemonstratieKalende");
+            n.Voegtoe();
+
+        }
+
+
 
 
         public static void DemonstreerIRoosterbaar()
