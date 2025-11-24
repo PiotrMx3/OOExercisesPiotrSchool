@@ -14,6 +14,7 @@ namespace OOExercisesPiotr
             Console.WriteLine("2.h17 Grootkeuken ");
             Console.WriteLine("3.h17 Rooster Stap 1");
             Console.WriteLine("4.h17 Rooster Stap 2");
+            Console.WriteLine("4.h17 Rooster Stap Losse koppeling");
 
 
 
@@ -33,6 +34,9 @@ namespace OOExercisesPiotr
                 case "4":
                     DemonstreerKalender1();
                     break;
+                case "5":
+                    DemonstreerKalender2();
+                    break;
                 default:
                     Console.WriteLine("verkeerde keuze");
                     break;
@@ -40,11 +44,16 @@ namespace OOExercisesPiotr
         }
 
 
+        public static void DemonstreerKalender2()
+        {
+            Kalender n = new Kalender("DemonstratieKalende");
+            n.VoegToeLosgekoppeld();
+        }
+
         public static void DemonstreerKalender1()
         {
             Kalender n = new Kalender("DemonstratieKalende");
             n.Voegtoe();
-
         }
 
 
@@ -62,6 +71,10 @@ namespace OOExercisesPiotr
         {
             TimeSpan Tijdsduur { get; }
             string Omschrijving { get; }
+            void Initialiseer();
+            DateTime RoosterOm(DateTime referentiepunt);
+
+
 
         }
 

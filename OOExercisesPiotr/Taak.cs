@@ -12,7 +12,10 @@ namespace OOExercisesPiotr
 		private TimeSpan _taskDuration;
 		private string _description = "";
 
+		public Taak()
+		{
 
+		}
 		public Taak(TimeSpan taksDuration, string description)
 		{
 			TaskDuration = taksDuration;
@@ -39,6 +42,26 @@ namespace OOExercisesPiotr
         public string Omschrijving
 		{
             get { return $" PM:{Description}"; }
+        }
+
+        public void Initialiseer()
+        {
+            Console.WriteLine("Omschrijving ?");
+            string userDescription = Console.ReadLine() ?? "";
+            Console.WriteLine();
+
+            Console.WriteLine("Aantal minuten werk ?");
+            int userTaskTime = Convert.ToInt32(Console.ReadLine());
+
+
+            TaskDuration = new TimeSpan(0,userTaskTime,0);
+            Description = userDescription;
+
+        }
+
+        public DateTime RoosterOm(DateTime referentiepunt)
+        {
+			return referentiepunt;
         }
     }
 }

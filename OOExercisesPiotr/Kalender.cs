@@ -1,55 +1,110 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static OOExercisesPiotr.Polymorfisme;
 
 namespace OOExercisesPiotr
 {
     internal class Kalender
     {
-		private string _name = "";
-		private Dictionary<DateTime,Polymorfisme.IRoosterbaar> _event = new();
+        private string _name = "";
+        private Dictionary<DateTime, Polymorfisme.IRoosterbaar> _event = new();
 
-		public Kalender(string name)
-		{
-			Name = name;
-		}
-		public ImmutableDictionary<DateTime,Polymorfisme.IRoosterbaar> Event
-		{
-			get { return this._event.ToImmutableDictionary(); }
-		}
+        public Kalender(string name)
+        {
+            Name = name;
+        }
+        public ImmutableDictionary<DateTime, Polymorfisme.IRoosterbaar> Event
+        {
+            get { return this._event.ToImmutableDictionary(); }
+        }
 
-		public string Name
-		{
-			get { return this._name; }
-			private set { this._name = value; }
-		}
-
-
-		public void Voegtoe()
-		{
-			bool isRunning = true;
-
-			while (isRunning)
-			{
-				Console.WriteLine("Om wat voor object gaat het ?");
-				Console.WriteLine("1. Afspraak");
-				Console.WriteLine("2. Taak");
-
-				string userInput = Console.ReadLine() ?? "";
-				Console.WriteLine();
+        public string Name
+        {
+            get { return this._name; }
+            private set { this._name = value; }
+        }
 
 
-				if(userInput == "1")
-				{
-					Console.WriteLine("Omschrijving ?");
-					string userDescription = Console.ReadLine() ?? "";
-					Console.WriteLine();
+        public void VoegToeLosgekoppeld()
+        {
 
-					Console.WriteLine("Aantal minuten verplaatsing ?");
-					int userMovingTime = Convert.ToInt32(Console.ReadLine());
+            bool isRunning = true;
+            while (isRunning)
+            {
+
+                System.Console.WriteLine("Om wat voor object gaat het?");
+                System.Console.WriteLine("1. Afspraak");
+                System.Console.WriteLine("2. Taak");
+
+                IRoosterbaar item;
+                DateTime begin;
+                int antwoord = Convert.ToInt32(Console.ReadLine());
+                if (antwoord == 1)
+                {
+                    item = new Afspraak();
+                }
+                else if (antwoord == 2)
+                {
+                    item = new Taak();
+                }
+                else
+                {
+                    Console.WriteLine("Ongeldige keuze !");
+                    continue;
+                }
+
+
+                item.Initialiseer();
+                System.Console.WriteLine("Wanneer moet dit geroosterd worden?");
+                begin = Convert.ToDateTime(Console.ReadLine(), new CultureInfo("nl-BE"));
+                this._event[item.RoosterOm(begin)] = item;
+
+
+                Console.WriteLine("Wil jij nog een item toevoegen? (ja/nee)");
+                string userInput = Console.ReadLine() ?? "";
+
+                if (userInput != "ja")
+                {
+                    isRunning = false;
+                    Console.WriteLine("Programma wordt afgesloten");
+                }
+
+            }
+
+            foreach (var itemTask in Event)
+            {
+                Console.WriteLine($"{itemTask.Key.ToString("dd/MM/yyyy HH:mm:ss")}{itemTask.Value.Omschrijving}");
+            }
+        }
+
+
+        public void Voegtoe()
+        {
+            bool isRunning = true;
+
+            while (isRunning)
+            {
+                Console.WriteLine("Om wat voor object gaat het ?");
+                Console.WriteLine("1. Afspraak");
+                Console.WriteLine("2. Taak");
+
+                string userInput = Console.ReadLine() ?? "";
+                Console.WriteLine();
+
+
+                if (userInput == "1")
+                {
+                    Console.WriteLine("Omschrijving ?");
+                    string userDescription = Console.ReadLine() ?? "";
+                    Console.WriteLine();
+
+                    Console.WriteLine("Aantal minuten verplaatsing ?");
+                    int userMovingTime = Convert.ToInt32(Console.ReadLine());
 
                     Console.WriteLine("Aantal minuten afspraak zelf ?");
                     int userAppointmentDuration = Convert.ToInt32(Console.ReadLine());
@@ -59,20 +114,20 @@ namespace OOExercisesPiotr
 
 
                     Console.WriteLine("Wanneer moet dit geroosterd worden ?");
-					string userAppointmentDate = Console.ReadLine() ?? "";
+                    string userAppointmentDate = Console.ReadLine() ?? "";
 
-					Afspraak newA = new Afspraak(new TimeSpan(0,userMovingTime,0), new TimeSpan(0,userComingBackTime,0), new TimeSpan(0,userAppointmentDuration,0), userDescription);
+                    Afspraak newA = new Afspraak(new TimeSpan(0, userMovingTime, 0), new TimeSpan(0, userComingBackTime, 0), new TimeSpan(0, userAppointmentDuration, 0), userDescription);
 
-					DateTime timeAppointment = DateTime.Parse(userAppointmentDate);
+                    DateTime timeAppointment = DateTime.Parse(userAppointmentDate);
 
-					timeAppointment = timeAppointment.AddMinutes(-userMovingTime);
+                    timeAppointment = timeAppointment.AddMinutes(-userMovingTime);
 
-					_event.Add(timeAppointment, newA);
+                    _event.Add(timeAppointment, newA);
 
-					
+
                 }
-                else if(userInput == "2")
-				{
+                else if (userInput == "2")
+                {
                     Console.WriteLine("Omschrijving ?");
                     string userDescription = Console.ReadLine() ?? "";
                     Console.WriteLine();
@@ -88,34 +143,32 @@ namespace OOExercisesPiotr
 
                     DateTime timeAppointment = DateTime.Parse(userAppointmentDate);
 
-                    timeAppointment = timeAppointment.AddMinutes(-userTaskTime);
-
                     _event.Add(timeAppointment, newT);
                 }
-				else
-				{
-					Console.WriteLine("Ongeldige keuze !");
-					continue;
-				}
+                else
+                {
+                    Console.WriteLine("Ongeldige keuze !");
+                    continue;
+                }
 
 
-				Console.WriteLine("Wil jij nog een item toevoegen? (ja/nee)");
-				userInput = Console.ReadLine() ?? "";
+                Console.WriteLine("Wil jij nog een item toevoegen? (ja/nee)");
+                userInput = Console.ReadLine() ?? "";
 
-				if(userInput != "ja")
-				{
-					isRunning = false;
-					Console.WriteLine("Programma wordt afgesloten");
-				}
-
-				
-			}
+                if (userInput != "ja")
+                {
+                    isRunning = false;
+                    Console.WriteLine("Programma wordt afgesloten");
+                }
 
 
-			foreach (var item in Event)
-			{
-				Console.WriteLine($"{item.Key.ToString("dd/MM/yyyy HH:mm:ss")}{item.Value.Omschrijving}");
-			}
+            }
+
+
+            foreach (var item in Event)
+            {
+                Console.WriteLine($"{item.Key.ToString("dd/MM/yyyy HH:mm:ss")}{item.Value.Omschrijving}");
+            }
 
 
         }
