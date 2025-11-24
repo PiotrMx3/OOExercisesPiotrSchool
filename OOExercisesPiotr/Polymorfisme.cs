@@ -12,6 +12,7 @@ namespace OOExercisesPiotr
         {
             Console.WriteLine("1.h17 Autoconstructeur ");
             Console.WriteLine("2.h17 Grootkeuken ");
+            Console.WriteLine("3.h17 Rooster Stap 1");
 
 
             string choice = (Console.ReadLine() ?? "").Trim();
@@ -24,11 +25,32 @@ namespace OOExercisesPiotr
                 case "2":
                     DemonstreerGrootkeuken();
                     break;
+                case "3":
+                    DemonstreerIRoosterbaar();
+                    break;
                 default:
                     Console.WriteLine("verkeerde keuze");
                     break;
             }
         }
+
+
+        public static void DemonstreerIRoosterbaar()
+        {
+            IRoosterbaar blok1 = new Afspraak(new TimeSpan(0, 20, 0), new TimeSpan(1, 0, 0), new TimeSpan(0, 20, 0), "tandarts");
+            IRoosterbaar blok2 = new Taak(new TimeSpan(2, 0, 0), "dagelijkse oefeningen OOP");
+            System.Console.WriteLine($"Totale kalendertijd: {(blok1.Tijdsduur + blok2.Tijdsduur).Hours}u{(blok1.Tijdsduur + blok2.Tijdsduur).Minutes}m");
+        }
+
+
+        public interface IRoosterbaar
+        {
+            TimeSpan Tijdsduur { get; }
+            string Omschrijving { get; }
+
+        }
+
+
 
         public static void DemonstreerGrootkeuken()
         {
