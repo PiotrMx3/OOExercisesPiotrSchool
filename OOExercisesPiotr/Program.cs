@@ -14,6 +14,7 @@ namespace OOExercisesPiotr
             Console.WriteLine("3: Data Structuren");
             Console.WriteLine("4: Overerving ");
             Console.WriteLine("5: Exception Afhandeling ");
+            Console.WriteLine("6: Polymorfisme ");
 
 
 
@@ -39,7 +40,9 @@ namespace OOExercisesPiotr
                 case "5":
                     ExceptionHandling.ShowSubMenu();
                     break;
-
+                case "6":
+                    Polymorfisme.ShowSubenu();
+                    break;
                 default:
                     Console.WriteLine("verkeerde keuze");
                     break; 
